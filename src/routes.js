@@ -7,6 +7,7 @@ import {
 
 // Pages
 import Dashboard from './pages/Dashboard';
+import Team from './pages/Team';
 
 // Component Definition
 const Routes = () => (
@@ -14,7 +15,12 @@ const Routes = () => (
     <Switch>
       <Route
         component={Dashboard}
-        to="/"
+        exact
+        path="/"
+      />
+      <Route
+        component={Team}
+        path="/teams/:id"
       />
     </Switch>
   </Router>

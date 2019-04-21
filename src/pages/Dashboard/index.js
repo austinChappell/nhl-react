@@ -1,10 +1,11 @@
 // External Dependencies
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 // Internal Dependencies
+import TeamLogo from '../../components/TeamLogo';
 import { Context } from '../../context';
 import { useLoadTeams } from '../../context/loaders/teams';
-import TeamLogo from '../../components/TeamLogo';
 
 // Component Definition
 const Dashboard = () => {
@@ -17,15 +18,16 @@ const Dashboard = () => {
       <ul>
         {context.state.teams.data.map(team => (
           <li key={team.id}>
-            {team.name}
-            <TeamLogo
-              alt={team.name}
-              teamId={team.id}
-            />
+            <Link to={`/teams/${team.id}`}>
+              {team.name}
+              <TeamLogo
+                alt={team.name}
+                teamId={team.id}
+              />
+            </Link>
           </li>
         ))}
       </ul>
-      Dashboard
     </div>
   );
 };
