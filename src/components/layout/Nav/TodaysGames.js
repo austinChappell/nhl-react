@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 // Internal Dependencies
 import { getTodaysGames } from '../../../api/schedule';
 import GameSummary from '../../shared/GameSummary';
+import Flex from '../../shared/Flex';
 
 // Component Definition
 const TodaysGames = () => {
@@ -32,13 +33,15 @@ const TodaysGames = () => {
   return (
     <div>
       <h2>Today's Games</h2>
-      {dates.map(date => (
-        date.games.map(game => (
-          <div key={game.gamePk}>
-            <GameSummary game={game} />
-          </div>
-        ))
-      ))}
+      <Flex>
+        {dates.map(date => (
+          date.games.map(game => (
+            <div key={game.gamePk}>
+              <GameSummary game={game} />
+            </div>
+          ))
+        ))}
+      </Flex>
     </div>
   );
 };

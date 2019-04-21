@@ -7,22 +7,30 @@ import {
 
 // Pages
 import Dashboard from './pages/Dashboard';
+import Game from './pages/Game';
 import Team from './pages/Team';
+import BaseLayout from './components/layout/BaseLayout';
 
 // Component Definition
 const Routes = () => (
   <Router>
-    <Switch>
-      <Route
-        component={Dashboard}
-        exact
-        path="/"
-      />
-      <Route
-        component={Team}
-        path="/teams/:id"
-      />
-    </Switch>
+    <BaseLayout>
+      <Switch>
+        <Route
+          component={Dashboard}
+          exact
+          path="/"
+        />
+        <Route
+          component={Team}
+          path="/teams/:id"
+        />
+        <Route
+          component={Game}
+          path="/games/:id"
+        />
+      </Switch>
+    </BaseLayout>
   </Router>
 )
 

@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom'
 
 // Local Variables
 const propTypes = {
@@ -69,17 +70,17 @@ const GameSummary = ({ game }) => {
     }
   } = game;
   return (
-    <div>
-      <div>
+    <Link to={`/games/${game.gamePk}`}>
+      <span>
         {moment(game.gameDate).format('h:mm a')}
-      </div>
+      </span>
       <h3>
         {renderTeam(awayTeam)} at {renderTeam(homeTeam)}
       </h3>
       <h4>
         {game.status.detailedState}
       </h4>
-    </div>
+    </Link>
   );
 };
 
