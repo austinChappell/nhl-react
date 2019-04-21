@@ -8,6 +8,8 @@ import teamsReducer, {
   initialState as initialTeamsState,
 } from './reducers/teams';
 
+const something = true;
+
 // Local Variables
 const propTypes = {
   children: PropTypes.node.isRequired,
