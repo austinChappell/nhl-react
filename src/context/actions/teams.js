@@ -1,7 +1,7 @@
 import ACTION_TYPES from '.';
 
 const actions = {
-  [ACTION_TYPES.TEAMS_GET_REQUEST]: (state, action) => {
+  [ACTION_TYPES.TEAMS_GET_REQUEST]: (state) => {
     const teams = { ...state.teams, loading: true };
     return {
       ...state,

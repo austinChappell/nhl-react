@@ -32,7 +32,7 @@ const TodaysGames = () => {
 
   return (
     <div>
-      <h2>Today's Games</h2>
+      <h2>Today&apos;s Games</h2>
       <Flex>
         {dates.map(date => (
           date.games.map(game => (

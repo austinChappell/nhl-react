@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // Local Variables
 const propTypes = {
@@ -13,7 +13,7 @@ const propTypes = {
     gameDate: PropTypes.string.isRequired,
     gamePk: PropTypes.number.isRequired,
     gameType: PropTypes.string.isRequired,
-    link:PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
     season: PropTypes.string.isRequired,
     status: PropTypes.shape({
       abstractGameState: PropTypes.string.isRequired,
@@ -67,7 +67,7 @@ const GameSummary = ({ game }) => {
     teams: {
       away: awayTeam,
       home: homeTeam,
-    }
+    },
   } = game;
   return (
     <Link to={`/games/${game.gamePk}`}>
@@ -75,7 +75,10 @@ const GameSummary = ({ game }) => {
         {moment(game.gameDate).format('h:mm a')}
       </span>
       <h3>
-        {renderTeam(awayTeam)} at {renderTeam(homeTeam)}
+        {renderTeam(awayTeam)}
+        {' '}
+at
+        {renderTeam(homeTeam)}
       </h3>
       <h4>
         {game.status.detailedState}

@@ -1,20 +1,31 @@
 // External Dependencies
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+
+// Internal Dependencies
 import { getGameFeed } from '../../api/games';
 import LineScore from './LineScore';
 
+// Local Variables
+const propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 const fetchGame = (gameId, setGameData, setLiveData) => async () => {
   try {
     const response = await getGameFeed(gameId);
 
     if (response.data.gameData) {
-      setGameData(response.data.gameData)
-      setLiveData(response.data.liveData)
+      setGameData(response.data.gameData);
+      setLiveData(response.data.liveData);
     }
   } catch (error) {
     throw error;
   }
-}
+};
 
 // Component Definition
 const Game = ({ match }) => {
@@ -28,8 +39,8 @@ const Game = ({ match }) => {
 
     return (() => {
       clearInterval(stopInterval);
-    })
-  }, [match.params.id])
+    });
+  }, [match.params.id]);
 
   if (!gameData || !liveData) {
     return null;
@@ -41,7 +52,7 @@ const Game = ({ match }) => {
     <div>
       <LineScore lineScore={liveData.linescore} />
       <ul>
-        {plays.map((play, index) => (
+        {plays.map(play => (
           <li key={play.about.eventIdx}>
             {play.result.description}
           </li>
@@ -50,5 +61,7 @@ const Game = ({ match }) => {
     </div>
   );
 };
+
+Game.propTypes = propTypes;
 
 export default Game;

@@ -6,5 +6,5 @@ import teamFetcher from '../fetcher/teams';
 export function useLoadTeams(context) {
   return useEffect(() => {
     teamFetcher.getTeams(context);
-  }, [])
+  }, []);
 }

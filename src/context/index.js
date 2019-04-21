@@ -19,6 +19,7 @@ const reducer = (state = initialState, action) => {
   if (teamsActions[action.type]) {
     return teamsReducer(state, action);
   }
+  return { ...state };
 };
 export const Context = React.createContext(initialState);
 

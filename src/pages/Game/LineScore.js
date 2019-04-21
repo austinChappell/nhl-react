@@ -17,16 +17,16 @@ const Box = styled.div`
 
 // Component Definition
 const LineScore = ({ lineScore }) => {
-  const totalScore = lineScore.periods.reduce((acc, curr, idx) => {
+  const totalScore = lineScore.periods.reduce((acc, curr) => {
     acc.away = acc.away + curr.away.goals;
     acc.home = acc.home + curr.home.goals;
     return acc;
-  }, { home: 0, away: 0 })
+  }, { home: 0, away: 0 });
 
   return (
     <div>
       <h3>
-        {lineScore.currentPeriodOrdinal} - {lineScore.currentPeriodTimeRemaining}
+        {`${lineScore.currentPeriodOrdinal} - ${lineScore.currentPeriodTimeRemaining}`}
       </h3>
 
       <Flex>

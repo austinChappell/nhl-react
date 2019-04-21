@@ -1,4 +1,5 @@
 // External Dependencies
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
 // Internal Dependencies
@@ -6,19 +7,27 @@ import TeamLogo from '../../components/TeamLogo';
 import { getTeam } from '../../api/teams';
 import Roster from './Roster';
 
+// Local Variables
+const propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
 // Component Definition
-const Team = (props) => {
+const Team = ({ match }) => {
   const [team, setTeam] = useState(null);
 
   async function fetchTeam() {
     try {
-      const response = await getTeam(props.match.params.id);
+      const response = await getTeam(match.params.id);
 
       if (response.data && response.data.teams.length) {
-        setTeam(response.data.teams[0])
+        setTeam(response.data.teams[0]);
       }
     } catch (error) {
-      console.error(error);
       throw error;
     }
   }
@@ -28,7 +37,7 @@ const Team = (props) => {
   }, []);
 
   if (!team) {
-    return <h2>Loading...</h2>
+    return <h2>Loading...</h2>;
   }
 
   return (
@@ -41,7 +50,9 @@ const Team = (props) => {
 
       <Roster teamId={team.id} />
     </div>
-  )
-}
+  );
+};
+
+Team.propTypes = propTypes;
 
 export default Team;

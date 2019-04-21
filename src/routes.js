@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, 
-  Route, 
+  BrowserRouter as Router,
+  Route,
   Switch,
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 // Pages
 import Dashboard from './pages/Dashboard';
@@ -32,6 +32,6 @@ const Routes = () => (
       </Switch>
     </BaseLayout>
   </Router>
-)
+);
 
 export default Routes;
