@@ -11,7 +11,7 @@ import { useLoadTeams } from '../../context/loaders/teams';
 const Dashboard = () => {
   const context = useContext(Context);
 
-  useLoadTeams(context)
+  useLoadTeams(context);
 
   return (
     <div>

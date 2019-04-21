@@ -6,7 +6,7 @@ import { getTeamRoster } from '../../api/teams';
 // Local Variables
 const propTypes = {
   teamId: PropTypes.number.isRequired,
-}
+};
 
 // Component Definition
 const Roster = ({ teamId }) => {
@@ -14,7 +14,7 @@ const Roster = ({ teamId }) => {
 
   async function fetchRoster() {
     try {
-      const response = await getTeamRoster(teamId)
+      const response = await getTeamRoster(teamId);
       if (response.data && response.data.roster) {
         setRoster(response.data.roster);
       }
@@ -35,12 +35,18 @@ const Roster = ({ teamId }) => {
     <ul>
       {roster.map(player => (
         <li key={player.person.id}>
-          {player.person.fullName} - #{player.jerseyNumber} - {player.position.abbreviation}
+          {player.person.fullName}
+          {' '}
+- #
+          {player.jerseyNumber}
+          {' '}
+-
+          {player.position.abbreviation}
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
 Roster.propTypes = propTypes;
 

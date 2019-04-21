@@ -11,17 +11,15 @@ const propTypes = {
 };
 
 // Component Definition
-const BaseLayout = ({ children }) => {
-  return (
-    <div>
-      <Nav />
-      {/* Enter children here */}
-      <main>
-        {children}
-      </main>
-    </div>
-  );
-};
+const BaseLayout = ({ children }) => (
+  <div>
+    <Nav />
+    {/* Enter children here */}
+    <main>
+      {children}
+    </main>
+  </div>
+);
 
 BaseLayout.propTypes = propTypes;
 
