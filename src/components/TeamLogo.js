@@ -2,8 +2,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Internal Dependencies
-
 // Local Variables
 const propTypes = {
   alt: PropTypes.string.isRequired,
