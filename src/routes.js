@@ -6,9 +6,10 @@ import {
 } from 'react-router-dom';
 
 // Pages
-import Dashboard from './pages/Dashboard';
 import Game from './pages/Game';
+import Home from './pages/Home';
 import Team from './pages/Team';
+import Teams from './pages/Teams';
 import BaseLayout from './components/layout/BaseLayout';
 
 // Component Definition
@@ -17,9 +18,13 @@ const Routes = () => (
     <BaseLayout>
       <Switch>
         <Route
-          component={Dashboard}
+          component={Home}
           exact
           path="/"
+        />
+        <Route
+          component={Teams}
+          path="/teams"
         />
         <Route
           component={Team}
