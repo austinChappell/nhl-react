@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { getTodaysGames } from '../../../api/schedule';
 import GameSummary from '../../shared/GameSummary';
 import Flex from '../../shared/Flex';
+import { useResizeWindow } from '../../../hooks/use-resize-window';
 
 // Local Variables
 const propTypes = {
@@ -31,6 +32,8 @@ const TodaysGames = ({
       throw error;
     }
   }
+
+  useResizeWindow(onUpdateHeight);
 
   useEffect(() => {
     fetchGames();
