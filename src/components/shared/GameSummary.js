@@ -2,7 +2,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { space, colors } from '../../constants/styles';
 
 // Local Variables
 const propTypes = {
@@ -56,9 +58,20 @@ const propTypes = {
     }).isRequired,
   }).isRequired,
 };
+const StyledLink = styled(Link)`
+  border: 1px solid ${colors.font.dark};
+  color: ${colors.font.dark};
+  display: block;
+  text-decoration: none;
+  padding: ${space.md};
+`;
+const SummaryContainer = styled.div`
+  margin-top: ${space.md};
+  text-align: right;
+`;
 
 function renderTeam(team) {
-  return `${team.team.name} - ${team.score}`;
+  return `${team.team.name} ${team.score}`;
 }
 
 // Component Definition
@@ -70,20 +83,19 @@ const GameSummary = ({ game }) => {
     },
   } = game;
   return (
-    <Link to={`/games/${game.gamePk}`}>
+    <StyledLink to={`/games/${game.gamePk}`}>
       <span>
-        {moment(game.gameDate).format('h:mm a')}
+        {`${moment(game.gameDate).format('h:mm a')} - ${game.status.detailedState}`}
       </span>
-      <h3>
-        {renderTeam(awayTeam)}
-        {' '}
-at
-        {renderTeam(homeTeam)}
-      </h3>
-      <h4>
-        {game.status.detailedState}
-      </h4>
-    </Link>
+      <SummaryContainer>
+        <h3>
+          {renderTeam(awayTeam)}
+        </h3>
+        <h3>
+          {renderTeam(homeTeam)}
+        </h3>
+      </SummaryContainer>
+    </StyledLink>
   );
 };
 
