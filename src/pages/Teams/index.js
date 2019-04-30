@@ -8,7 +8,7 @@ import { Context } from '../../context';
 import { useLoadTeams } from '../../context/loaders/teams';
 
 // Component Definition
-const Dashboard = () => {
+const Teams = () => {
   const context = useContext(Context);
 
   useLoadTeams(context);
@@ -32,4 +32,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Teams;
